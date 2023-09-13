@@ -1,8 +1,7 @@
 const rulesButtons = document.querySelectorAll(".toggle-rules");
 const gameKeys = document.querySelectorAll(".game-key");
 const playBoard = document.querySelector(".play-board");
-
-let showRes = false;
+const actionNextButton = document.querySelector(".next");
 
 rulesButtons.forEach((elem) => {
   elem.addEventListener("click", toggelCard);
@@ -23,8 +22,6 @@ function drawHand(key) {
   const selectedHand = key.className.split(" ");
   const index = getRandomInt(handsArr.length);
   const compHand = handsArr[index];
-  console.log(compHand);
-
   const data = compareHands(selectedHand[1], compHand);
   showResult(data, selectedHand[1], compHand);
 }
@@ -79,19 +76,19 @@ function showResult(outcome, selectedHand, compHand) {
   </div>
   `;
 
-  playBoard.style.display = "none";
-  
-  playGround.insertAdjacentElement("afterbegin", result);
+  if (outcome == "YOU WIN") {
+    actionNextButton.style.display = "inline-block";
+  }
 
+  playGround.insertAdjacentElement("afterbegin", result);
+  playBoard.style.display = "none";
   const playAgainButton = document.querySelector(".play-again");
   playAgainButton.addEventListener("click", reStartGame);
 }
 
 function reStartGame() {
-  console.log("button");
   const result = document.querySelector(".result");
-
   result.remove();
-
   playBoard.style.display = "";
+  actionNextButton.style.display = "";
 }

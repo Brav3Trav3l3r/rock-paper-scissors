@@ -188,7 +188,7 @@ body {
   right: 20px;
 }
 
-.actions button {
+.actions .action {
   background-color: transparent;
   padding: 1rem 1.5rem;
   margin-left: 0.75rem;
@@ -207,6 +207,7 @@ body {
 }
 
 .rules-card {
+  display: none;
   position: absolute;
   right: 2rem;
   bottom: 5rem;
@@ -215,16 +216,41 @@ body {
   border: 0.325rem solid;
   padding: 2rem;
   width: 240px;
+  animation-duration: 200ms;
+  animation-name: scalein;
+  transform-origin: bottom right;
 }
 
-.rules-card .close-card {
+.show-card {
+  display: block;
+}
+
+@keyframes scalein {
+  from {
+    transform: scale(0.5) translateX(60px);
+  }
+
+  to {
+    transform: scale(1) translateX(0px);
+  }
+}
+
+.rules-card button {
   position: absolute;
   top: -30px;
   right: -30px;
   border-radius: 50%;
   background-color: red;
-  aspect-ratio: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1.2rem;
   border: 0.325rem solid;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 ul {

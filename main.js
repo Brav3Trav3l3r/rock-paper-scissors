@@ -1,8 +1,12 @@
-let actions = document.querySelector(".action");
-let ruleButton = document.querySelector(".rules");
+let rulesButtons = document.querySelectorAll(".toggle-rules");
 
-ruleButton.addEventListener("click", toggelModal);
+rulesButtons.forEach((elem) => elem.addEventListener("click", toggelModal));
 
-// function toggelModal(){
-//     actions.append()
-// } 
+function toggelModal() {
+  let ruleCard = document.querySelector(".rules-card");
+  ruleCard.classList.toggle("show-card");
+}
+
+const gameKeys = {
+    
+}

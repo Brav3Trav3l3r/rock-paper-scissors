@@ -1,11 +1,14 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  --main-color: #ffffff;
+  --neurtal-color: #656565;
+
   color-scheme: light dark;
-  color: #ffffff ;
-  background-color: #89C15E;
+  color: var(--main-color);
+  background-color: #89c15e;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,12 +17,130 @@
   -webkit-text-size-adjust: 100%;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-#app{
+#app {
   height: 100vh;
   box-sizing: border-box;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* scoreBoard */
+
+.score-board {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  max-width: 800px;
+  border: 3px solid;
+  padding: 1.2rem;
+  border-radius: 1.2rem;
+  align-items: center;
+}
+
+.score-sheet {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+}
+
+.score-board .title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.score-board .title h1 {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.score-sheet > div {
+  background-color: #ffffff;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 140px;
+}
+
+.score-sheet .score p {
+  text-align: center;
+  font-weight: 700;
+  color: var(--neurtal-color);
+  font-size: 1.125rem;
+}
+
+.score-sheet .score h1 {
+  line-height: 1.2;
+  font-size: 4.25rem;
+  font-weight: 700;
+}
+
+/* playground */
+
+.playground {
+  position: relative;
+  margin-top: 200px;
+  height: 260px;
+}
+
+.lines > div {
+  height: 1rem;
+  width: 300px;
+  background-color: var(--neurtal-color);
+  border: 2px black;
+}
+
+.line-two {
+  transform-origin: top left;
+  transform: rotate(60deg);
+  position: relative;
+}
+
+.line-three {
+  transform-origin: top right;
+  transform: rotate(-60deg);
+  position: relative;
+  top: -1rem;
+}
+
+.game-key {
+  background-color: var(--main-color);
+  border-radius: 50%;
+  width: 140px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rem solid mediumslateblue;
+  position: absolute;
+  /* opacity: 50%; */
+}
+
+.game-key img {
+  border: 2px solid;
+}
+
+.game-key.rock {
+  top: -70px;
+  left: -70px;
+}
+.game-key.paper {
+  bottom: -70px;
+  left: 60px;
+}
+
+.game-key.scissors {
+  top: -70px;
+  right: -70px;
 }

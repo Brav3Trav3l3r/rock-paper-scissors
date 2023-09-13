@@ -107,9 +107,14 @@ body {
 
 .playground {
   position: relative;
-  margin-top: 150px;
-  height: 260px;
   width: fit-content;
+  margin-top: 100px;
+}
+
+.play-board {
+  position: relative;
+  margin-top: 50px;
+  height: 300px;
 }
 
 .lines > div {
@@ -192,16 +197,16 @@ body {
 }
 
 .game-key.rock {
-  top: -70px;
-  left: -70px;
+  top: -80px;
+  left: -80px;
 }
 .game-key.scissors {
   bottom: -70px;
-  left: 70px;
+  left: 60px;
 }
 .game-key.paper {
-  top: -70px;
-  right: -70px;
+  top: -80px;
+  right: -80px;
 }
 
 /* actions */
@@ -253,6 +258,7 @@ body {
   animation-duration: 200ms;
   animation-name: scalein;
   transform-origin: bottom right;
+  z-index: 50;
 }
 
 .show-card {

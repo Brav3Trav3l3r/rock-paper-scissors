@@ -56,7 +56,7 @@ body {
   justify-content: space-between;
   max-width: 900px;
   border: 3px solid;
-  padding: 1.2rem;
+  padding: 1rem;
   border-radius: 1.2rem;
   align-items: center;
 }
@@ -70,7 +70,7 @@ body {
 .score-board .title {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .score-board .title h1 {
@@ -99,7 +99,7 @@ body {
 
 .score-sheet .score h1 {
   line-height: 1.2;
-  font-size: 4.25rem;
+  font-size: 4rem;
   font-weight: 700;
 }
 
@@ -114,12 +114,12 @@ body {
 .play-board {
   position: relative;
   margin-top: 50px;
-  height: 300px;
+  height: 240px;
 }
 
 .lines > div {
   height: 1rem;
-  width: 300px;
+  width: 240px;
   background-color: var(--neurtal-color);
   border: 2px black;
 }
@@ -147,7 +147,7 @@ body {
   box-shadow: rgba(76, 76, 76, 0.3) 0px 1px 0px,
     rgba(76, 76, 76, 0.3) 0px 8px 24px, rgba(76, 76, 76, 0.3) 0px 16px 48px;
   border-radius: 50%;
-  width: 180px;
+  width: 150px;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
@@ -197,16 +197,16 @@ body {
 }
 
 .game-key.rock {
-  top: -80px;
-  left: -80px;
+  top: -70px;
+  left: -70px;
 }
 .game-key.scissors {
-  bottom: -70px;
-  left: 60px;
+  bottom: -40px;
+  left: 45px;
 }
 .game-key.paper {
-  top: -80px;
-  right: -80px;
+  top: -70px;
+  right: -70px;
 }
 
 /* actions */
@@ -322,6 +322,7 @@ li::before {
 }
 
 .hand h2 {
+  font-size: 1.2rem;
   z-index: 10;
   font-weight: 600;
 }
@@ -334,13 +335,15 @@ li::before {
 }
 
 .message h1 {
-  font-size: 3rem;
-  line-height: 1.2;
+  letter-spacing: 0.25rem;
+  font-size: 2.3rem;
+  line-height: 1.3;
 }
 
 .message h2 {
-  font-size: 2rem;
-  line-height: 1.2;
+  letter-spacing: 0.125rem;
+  font-size: 1.725rem;
+  line-height: 1.3;
 }
 
 .message .btn {

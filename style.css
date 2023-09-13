@@ -4,7 +4,7 @@
   font-weight: 400;
 
   --main-color: #ffffff;
-  --neurtal-color: #656565;
+  --neurtal-color: #454545;
 
   color-scheme: light dark;
   color: var(--main-color);
@@ -22,10 +22,15 @@
   padding: 0;
 }
 
-#app {
+body {
   height: 100vh;
   box-sizing: border-box;
   padding: 3rem;
+  position: relative;
+}
+
+#app {
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +42,7 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  max-width: 800px;
+  max-width: 900px;
   border: 3px solid;
   padding: 1.2rem;
   border-radius: 1.2rem;
@@ -92,6 +97,7 @@
   position: relative;
   margin-top: 200px;
   height: 260px;
+  width: fit-content;
 }
 
 .lines > div {
@@ -115,32 +121,85 @@
 }
 
 .game-key {
-  background-color: var(--main-color);
+  background: rgb(245, 245, 245);
+  background: radial-gradient(
+    circle,
+    rgba(245, 245, 245, 1) 31%,
+    rgba(199, 199, 199, 1) 100%
+  );
   border-radius: 50%;
-  width: 140px;
+  width: 160px;
   aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1rem solid mediumslateblue;
   position: absolute;
-  /* opacity: 50%; */
+  box-sizing: border-box;
+  border-width: 1rem;
+  border-style: solid;
+  transition: all 100ms ease-in;
+  cursor: pointer;
+}
+
+.game-key:hover {
+  border-width: 0.625rem;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 31%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 0px,
+    rgba(255, 255, 255, 0.3) 0px 8px 24px,
+    rgba(255, 255, 255, 0.3) 0px 16px 48px;
 }
 
 .game-key img {
-  border: 2px solid;
+  transition: all 100ms ease-in;
+}
+
+.game-key:hover img {
+  scale: 1.2;
 }
 
 .game-key.rock {
+  border-color: #0074b6;
   top: -70px;
   left: -70px;
 }
-.game-key.paper {
-  bottom: -70px;
-  left: 60px;
-}
 
 .game-key.scissors {
+  border-color: #bd00ff;
+  bottom: -70px;
+  left: 70px;
+}
+
+.game-key.paper {
+  border-color: #ffa943;
   top: -70px;
   right: -70px;
+}
+
+.actions {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.actions button {
+  background-color: transparent;
+  padding: 1rem 1.5rem;
+  margin-left: 0.75rem;
+  border: 2px solid var(--main-color);
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+
+.actions button:hover {
+  background-color: var(--main-color);
+  color: var(--neurtal-color);
 }

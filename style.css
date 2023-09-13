@@ -180,6 +180,8 @@ body {
   right: -70px;
 }
 
+/* actions */
+
 .actions {
   position: absolute;
   bottom: 20px;
@@ -199,7 +201,43 @@ body {
   transition: all 100ms ease-in-out;
 }
 
-.actions button:hover {
+.actions .action:hover {
   background-color: var(--main-color);
   color: var(--neurtal-color);
+}
+
+.rules-card {
+  position: absolute;
+  right: 2rem;
+  bottom: 5rem;
+  background-color: #004429;
+  border-radius: 0.5rem;
+  border: 0.325rem solid;
+  padding: 2rem;
+  width: 240px;
+}
+
+.rules-card .close-card {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  border-radius: 50%;
+  background-color: red;
+  aspect-ratio: 1;
+  border: 0.325rem solid;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+li::before {
+  content: "∎";
+  color: yellow; /* or whatever color you prefer */
 }

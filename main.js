@@ -2,6 +2,8 @@ const rulesButtons = document.querySelectorAll(".toggle-rules");
 const gameKeys = document.querySelectorAll(".game-key");
 const playBoard = document.querySelector(".play-board");
 const actionNextButton = document.querySelector(".next");
+const myScore = document.querySelector(".my-score");
+const compScore = document.querySelector(".comp-score");
 
 rulesButtons.forEach((elem) => {
   elem.addEventListener("click", toggelCard);
@@ -82,6 +84,8 @@ function showResult(outcome, selectedHand, compHand) {
 
   playGround.insertAdjacentElement("afterbegin", result);
   playBoard.style.display = "none";
+
+  handleScore(outcome);
   const playAgainButton = document.querySelector(".play-again");
   playAgainButton.addEventListener("click", reStartGame);
 }
@@ -92,3 +96,38 @@ function reStartGame() {
   playBoard.style.display = "";
   actionNextButton.style.display = "";
 }
+
+function handleScore(outcome) {
+  if (outcome == "TIE UP") return;
+
+  const score = getScore();
+
+  if (outcome == "YOU WIN") {
+    score.myScore += 1;
+    localStorage.setItem("rpsScore", JSON.stringify(score));
+  } else if (outcome == "YOU LOSE") {
+    score.compScore += 1;
+    localStorage.setItem("rpsScore", JSON.stringify(score));
+  }
+
+  updateScore();
+}
+
+function updateScore() {
+  const score = getScore();
+  myScore.innerHTML = score.myScore;
+  compScore.innerHTML = score.compScore;
+}
+
+function getScore() {
+  const score = localStorage.getItem("rpsScore");
+  if (!score) {
+    const scoreObj = { myScore: 0, compScore: 0 };
+    localStorage.setItem("rpsScore", JSON.stringify(scoreObj));
+    return scoreObj;
+  }
+
+  return JSON.parse(score);
+}
+
+updateScore();

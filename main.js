@@ -1,5 +1,7 @@
 const rulesButtons = document.querySelectorAll(".toggle-rules");
 const gameKeys = document.querySelectorAll(".game-key");
+const playGround = document.querySelector(".playground");
+const gameComponent = document.querySelector("#app");
 const playBoard = document.querySelector(".play-board");
 const actionNextButton = document.querySelector(".next");
 const myScore = document.querySelector(".my-score");
@@ -14,7 +16,7 @@ function toggelCard() {
   ruleCard.classList.toggle("show-card");
 }
 
-let handsArr = ["rock", "paper", "scissors"];
+const handsArr = ["rock", "paper", "scissors"];
 
 gameKeys.forEach((key) => {
   key.addEventListener("click", () => drawHand(key));
@@ -47,8 +49,6 @@ function compareHands(handOne, handTwo) {
 }
 
 function showResult(outcome, selectedHand, compHand) {
-  const playGround = document.querySelector(".playground");
-
   const result = document.createElement("div");
   result.classList.add("result");
 
@@ -110,10 +110,10 @@ function handleScore(outcome) {
     localStorage.setItem("rpsScore", JSON.stringify(score));
   }
 
-  updateScore();
+  updateScoreHtml();
 }
 
-function updateScore() {
+function updateScoreHtml() {
   const score = getScore();
   myScore.innerHTML = score.myScore;
   compScore.innerHTML = score.compScore;
@@ -130,4 +130,28 @@ function getScore() {
   return JSON.parse(score);
 }
 
-updateScore();
+updateScoreHtml();
+
+actionNextButton.addEventListener("click", showHurrayPage);
+
+function showHurrayPage() {
+  gameComponent.style.display = "none";
+  actionNextButton.style.display = "";
+
+  const hurrayComponent = document.createElement("div");
+  hurrayComponent.classList.add("hurray");
+
+  hurrayComponent.innerHTML = `<h1>Hurray</h1>
+  <button class='btn replay-game'>PLAY AGAIN</button>
+  `;
+
+  document.body.insertAdjacentElement("afterbegin", hurrayComponent);
+  const replayButton = document.querySelector(".replay-game");
+  replayButton.addEventListener("click", replayGame);
+}
+
+function replayGame() {
+  const hurrayComponent = document.querySelector(".hurray");
+  hurrayComponent.remove();
+  gameComponent.style.display = "";
+}

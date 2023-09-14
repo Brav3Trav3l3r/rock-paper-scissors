@@ -135,15 +135,17 @@ updateScoreHtml();
 actionNextButton.addEventListener("click", showHurrayPage);
 
 function showHurrayPage() {
-  gameComponent.style.display = "none";
-  actionNextButton.style.display = "";
-
   const hurrayComponent = document.createElement("div");
   hurrayComponent.classList.add("hurray");
-
   hurrayComponent.innerHTML = `<h1>Hurray</h1>
   <button class='btn replay-game'>PLAY AGAIN</button>
   `;
+
+  
+  const result = document.querySelector(".result");
+  result.remove();
+  gameComponent.style.display = "none";
+  actionNextButton.style.display = "";
 
   document.body.insertAdjacentElement("afterbegin", hurrayComponent);
   const replayButton = document.querySelector(".replay-game");
@@ -154,4 +156,6 @@ function replayGame() {
   const hurrayComponent = document.querySelector(".hurray");
   hurrayComponent.remove();
   gameComponent.style.display = "";
+  playBoard.style.display = "";
+  actionNextButton.style.display = "";
 }

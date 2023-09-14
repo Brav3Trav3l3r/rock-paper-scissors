@@ -55,7 +55,7 @@ function showResult(outcome, selectedHand, compHand) {
   result.innerHTML = `
   <div class="hand">
     <h2>YOU PICKED</h2>
-    <div class="key ${selectedHand} ${
+    <div class="key res-key ${selectedHand} ${
     outcome == "YOU WIN" ? "winner-key" : ""
   }">
       <img src="/${selectedHand}.png" alt="" />
@@ -72,7 +72,9 @@ function showResult(outcome, selectedHand, compHand) {
 
   <div class="hand">
     <h2>COMPUTER PICKED</h2>
-    <div class="key ${compHand} ${outcome == "YOU LOSE" ? "winner-key" : ""}">
+    <div class="key res-key ${compHand} ${
+    outcome == "YOU LOSE" ? "winner-key" : ""
+  }">
       <img src="/${compHand}.png" alt="" />
     </div>
   </div>
@@ -137,11 +139,19 @@ actionNextButton.addEventListener("click", showHurrayPage);
 function showHurrayPage() {
   const hurrayComponent = document.createElement("div");
   hurrayComponent.classList.add("hurray");
-  hurrayComponent.innerHTML = `<h1>Hurray</h1>
-  <button class='btn replay-game'>PLAY AGAIN</button>
+  hurrayComponent.innerHTML = `
+    <div class="images">
+      <img class="cup" src="/cup.png" alt="" />
+      <img class="stars" src="/stars.png" alt="" />
+    </div>
+  
+    <div class="greet">
+      <h1>HURRAY!!</h1>
+      <h2>YOU WON THE GAME</h2>
+    </div>
+    <button class="btn replay-game">PLAY AGAIN</button>
   `;
 
-  
   const result = document.querySelector(".result");
   result.remove();
   gameComponent.style.display = "none";

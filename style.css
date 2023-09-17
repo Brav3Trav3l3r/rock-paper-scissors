@@ -48,6 +48,27 @@ body {
   border: 2px solid transparent;
 }
 
+.primary-btn {
+  background-color: var(--main-color);
+  color: var(--neurtal-color);
+}
+
+.primary-btn:hover {
+  background-color: transparent;
+  color: var(--main-color);
+  border: 2px solid var(--main-color);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  border: 2px solid var(--main-color);
+}
+
+.secondary-btn:hover {
+  background-color: var(--main-color);
+  color: var(--neurtal-color);
+}
+
 /* scoreBoard */
 
 .score-board {
@@ -61,12 +82,6 @@ body {
   align-items: center;
 }
 
-.score-sheet {
-  display: flex;
-  gap: 1rem;
-  height: 100%;
-}
-
 .score-board .title {
   display: flex;
   flex-direction: column;
@@ -76,6 +91,12 @@ body {
 .score-board .title h1 {
   font-weight: 600;
   font-size: 2.5rem;
+}
+
+.score-sheet {
+  display: flex;
+  gap: 1rem;
+  height: 100%;
 }
 
 .score-sheet > div {
@@ -157,6 +178,18 @@ body {
   border-style: solid;
 }
 
+.key.rock {
+  border-color: #0074b6;
+}
+
+.key.scissors {
+  border-color: #bd00ff;
+}
+
+.key.paper {
+  border-color: #ffa943;
+}
+
 .key.res-key {
   width: 180px;
 }
@@ -184,18 +217,6 @@ body {
 
 .game-key:hover img {
   scale: 1.2;
-}
-
-.key.rock {
-  border-color: #0074b6;
-}
-
-.key.scissors {
-  border-color: #bd00ff;
-}
-
-.key.paper {
-  border-color: #ffa943;
 }
 
 .game-key.rock {
@@ -226,31 +247,8 @@ body {
   gap: 1rem;
 }
 
-.hurray .replay-game,
-.message .btn {
-  background-color: var(--main-color);
-  color: var(--neurtal-color);
-}
-
-.hurray .replay-game:hover,
-.message .btn:hover {
-  background-color: transparent;
-  color: var(--main-color);
-  border: 2px solid var(--main-color);
-}
-
-.action.btn {
-  background-color: transparent;
-  border: 2px solid var(--main-color);
-}
-
-.action.next {
+.actions .next {
   display: none;
-}
-
-.action.btn:hover {
-  background-color: var(--main-color);
-  color: var(--neurtal-color);
 }
 
 .rules-card {
@@ -359,9 +357,11 @@ li::before {
 }
 
 .winner-key {
-  box-shadow: 0px 0px 40px -8px rgba(0, 0, 0, 0.598), 0px 0px 0px 40px #299827,
-    0px 0px 0px 70px #33a62e, 0px 0px 0px 95px #67b249;
+  box-shadow: 0px 0px 40px -4px rgba(0, 0, 0, 0.598), 0px 0px 0px 30px #299827,
+    0px 0px 0px 60px #33a62e, 0px 0px 0px 90px #67b249;
 }
+
+/* hurray component */
 
 .hurray {
   display: flex;

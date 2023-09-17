@@ -23,11 +23,11 @@ gameKeys.forEach((key) => {
 });
 
 function drawHand(key) {
-  const selectedHand = key.className.split(" ");
+  const selectedHand = key.id;
   const index = getRandomInt(handsArr.length);
   const compHand = handsArr[index];
-  const data = compareHands(selectedHand[1], compHand);
-  showResult(data, selectedHand[1], compHand);
+  const data = compareHands(selectedHand, compHand);
+  showResult(data, selectedHand, compHand);
 }
 
 function getRandomInt(max) {
@@ -65,7 +65,7 @@ function showResult(outcome, selectedHand, compHand) {
   <div class="message">
     <h1>${outcome}</h1>
     <h2>${outcome == "TIE UP" ? "" : "AGAINST COMPUTER"}</h2>
-    <button class="btn play-again">${
+    <button class="btn primary-btn play-again">${
       outcome == "TIE UP" ? "REPLAY" : "PLAY AGAIN"
     }</button>
   </div>
@@ -134,6 +134,9 @@ function getScore() {
 
 updateScoreHtml();
 
+
+//hurray component
+
 actionNextButton.addEventListener("click", showHurrayPage);
 
 function showHurrayPage() {
@@ -149,7 +152,7 @@ function showHurrayPage() {
       <h1>HURRAY!!</h1>
       <h2>YOU WON THE GAME</h2>
     </div>
-    <button class="btn replay-game">PLAY AGAIN</button>
+    <button class="btn primary-btn replay-game">PLAY AGAIN</button>
   `;
 
   const result = document.querySelector(".result");

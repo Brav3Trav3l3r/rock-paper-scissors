@@ -88,6 +88,7 @@ function showResult(outcome, selectedHand, compHand) {
   playBoard.style.display = "none";
 
   handleScore(outcome);
+
   const playAgainButton = document.querySelector(".play-again");
   playAgainButton.addEventListener("click", reStartGame);
 }

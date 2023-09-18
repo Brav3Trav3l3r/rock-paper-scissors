@@ -1,11 +1,8 @@
 const rulesButtons = document.querySelectorAll(".toggle-rules");
-const gameKeys = document.querySelectorAll(".game-key");
-const playGround = document.querySelector(".playground");
 const gameComponent = document.querySelector("#app");
+const gameKeys = document.querySelectorAll(".game-key");
 const playBoard = document.querySelector(".play-board");
 const actionNextButton = document.querySelector(".next");
-const myScore = document.querySelector(".my-score");
-const compScore = document.querySelector(".comp-score");
 
 rulesButtons.forEach((elem) => {
   elem.addEventListener("click", toggelCard);
@@ -84,6 +81,7 @@ const showResult = (outcome, selectedHand, compHand) => {
 
   handleScore(outcome);
 
+  const playGround = document.querySelector(".playground");
   playGround.insertAdjacentElement("afterbegin", result);
   playBoard.style.display = "none";
   const playAgainButton = document.querySelector(".play-again");
@@ -126,6 +124,8 @@ function getScore() {
 
 function updateScoreHtml() {
   const score = getScore();
+  const myScore = document.querySelector(".my-score");
+  const compScore = document.querySelector(".comp-score");
   myScore.innerHTML = score.myScore;
   compScore.innerHTML = score.compScore;
 }

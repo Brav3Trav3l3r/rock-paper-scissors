@@ -1,7 +1,7 @@
 
 # Rock-Paper-Scissors game
 
-The rock-paper-scissors game, where you play against comp. Made with vaniall Js and css
+A rock-paper-scissors game, where you play against comp. Made with vaniall Js and css
 
 ## Run Locally
 

@@ -19,36 +19,34 @@ function toggelCard() {
 const handsArr = ["rock", "paper", "scissors"];
 
 gameKeys.forEach((key) => {
-  key.addEventListener("click", () => drawHand(key));
+  key.addEventListener("click", () => drawHands(key));
 });
 
-function drawHand(key) {
+function drawHands(key) {
   const selectedHand = key.id;
-  const index = getRandomInt(handsArr.length);
-  const compHand = handsArr[index];
-  const data = compareHands(selectedHand, compHand);
-  showResult(data, selectedHand, compHand);
+  const compHand = getCompHand();
+  const outcome = compareHands(selectedHand, compHand);
+  showResult(outcome, selectedHand, compHand);
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
+const getCompHand = () => {
+  const randomIndex = Math.floor(Math.random() * handsArr.length);
+  return handsArr[randomIndex];
+};
 
-function compareHands(handOne, handTwo) {
-  if (handOne == handTwo) {
+const compareHands = (selectedHand, compHand) => {
+  if (selectedHand == compHand) {
     return "TIE UP";
+  } else if (selectedHand == "rock") {
+    return compHand == "scissors" ? "YOU WIN" : "YOU LOSE";
+  } else if (selectedHand == "paper") {
+    return compHand == "rock" ? "YOU WIN" : "YOU LOSE";
+  } else if (selectedHand == "scissors") {
+    return compHand == "paper" ? "YOU WIN" : "YOU LOSE";
   }
+};
 
-  if (handOne == "rock") {
-    return handTwo == "scissors" ? "YOU WIN" : "YOU LOSE";
-  } else if (handOne == "paper") {
-    return handTwo == "rock" ? "YOU WIN" : "YOU LOSE";
-  } else if (handOne == "scissors") {
-    return handTwo == "paper" ? "YOU WIN" : "YOU LOSE";
-  }
-}
-
-function showResult(outcome, selectedHand, compHand) {
+const showResult = (outcome, selectedHand, compHand) => {
   const result = document.createElement("div");
   result.classList.add("result");
 
@@ -84,23 +82,22 @@ function showResult(outcome, selectedHand, compHand) {
     actionNextButton.style.display = "inline-block";
   }
 
-  playGround.insertAdjacentElement("afterbegin", result);
-  playBoard.style.display = "none";
-
   handleScore(outcome);
 
+  playGround.insertAdjacentElement("afterbegin", result);
+  playBoard.style.display = "none";
   const playAgainButton = document.querySelector(".play-again");
   playAgainButton.addEventListener("click", reStartGame);
-}
+};
 
-function reStartGame() {
+const reStartGame = () => {
   const result = document.querySelector(".result");
   result.remove();
   playBoard.style.display = "";
   actionNextButton.style.display = "";
-}
+};
 
-function handleScore(outcome) {
+const handleScore = (outcome) => {
   if (outcome == "TIE UP") return;
 
   const score = getScore();
@@ -114,13 +111,7 @@ function handleScore(outcome) {
   }
 
   updateScoreHtml();
-}
-
-function updateScoreHtml() {
-  const score = getScore();
-  myScore.innerHTML = score.myScore;
-  compScore.innerHTML = score.compScore;
-}
+};
 
 function getScore() {
   const score = localStorage.getItem("rpsScore");
@@ -133,17 +124,21 @@ function getScore() {
   return JSON.parse(score);
 }
 
+function updateScoreHtml() {
+  const score = getScore();
+  myScore.innerHTML = score.myScore;
+  compScore.innerHTML = score.compScore;
+}
+
 updateScoreHtml();
 
+//greet component
+actionNextButton.addEventListener("click", showGreetPage);
 
-//hurray component
-
-actionNextButton.addEventListener("click", showHurrayPage);
-
-function showHurrayPage() {
-  const hurrayComponent = document.createElement("div");
-  hurrayComponent.classList.add("hurray");
-  hurrayComponent.innerHTML = `
+function showGreetPage() {
+  const greetComponent = document.createElement("div");
+  greetComponent.classList.add("greet-comp");
+  greetComponent.innerHTML = `
     <div class="images">
       <img class="cup" src="/cup.png" alt="" />
       <img class="stars" src="/stars.png" alt="" />
@@ -161,15 +156,15 @@ function showHurrayPage() {
   gameComponent.style.display = "none";
   actionNextButton.style.display = "";
 
-  document.body.insertAdjacentElement("afterbegin", hurrayComponent);
+  document.body.insertAdjacentElement("afterbegin", greetComponent);
   const replayButton = document.querySelector(".replay-game");
   replayButton.addEventListener("click", replayGame);
 }
 
-function replayGame() {
-  const hurrayComponent = document.querySelector(".hurray");
-  hurrayComponent.remove();
+const replayGame = () => {
+  const greetComponent = document.querySelector(".greet-comp");
+  greetComponent.remove();
   gameComponent.style.display = "";
   playBoard.style.display = "";
   actionNextButton.style.display = "";
-}
+};
